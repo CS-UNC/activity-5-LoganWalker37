@@ -10,16 +10,16 @@ def has_no_e(word):
     else:
         return True
 
-def uses_only(word, letters):
-    successes = 0
-    for i in word:
-        for j in letters:
-            if j == i:
-                successes += 1
-    if successes == len(word):
-        return True
-    else:
-        return False
+# def uses_only(word, letters):
+#     successes = 0
+#     for i in word:
+#         for j in letters:
+#             if j == i:
+#                 successes += 1
+#     if successes == len(word):
+#         return True
+#     else:
+#         return False
 
 def uses_only(word, letters):
     for value in word:
@@ -29,9 +29,15 @@ def uses_only(word, letters):
         
         
     
-# def all_uses_only(file, letters):
-#     words = []
-#     data = open(file, 'r')
-#     words = [x.strip() for x in data if uses_only(file, letters) == True]
-#     return words
-print(uses_only("aa", "abrd"))
+def all_uses_only(file, letterList):
+    words = []
+    data = open(file)
+    for line in data:
+        isRight = uses_only(line, letterList + "\n")
+        if isRight == True: 
+            words.append(line.strip())  
+    return words    
+
+
+
+print(all_uses_only("CROSSWD.txt", "abcd"))
